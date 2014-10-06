@@ -10,7 +10,7 @@ def console = new BufferedReader(new InputStreamReader(System.in))
 def numberOfLines = console.readInt()
 
 def lines = (1..numberOfLines).collect {
-    sysin.readLine()
+    console.readLine()
 }
 
 def averageLength = lines.collect { line -> line.length() } .sum() / lines.size()

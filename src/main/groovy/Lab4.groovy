@@ -17,7 +17,20 @@ def Y_SIZE = 300
 def c = new Circle()
 
 def graphicsOperation = new GraphicsBuilder().group {
-    circle(cx: X_SIZE / 2, cy: Y_SIZE / 2, radius: bind(source: c, sourceProperty: 'radius'), fill: 'yellow')
+
+    arc(
+            x: X_SIZE / 3, y: Y_SIZE / 3,
+            width: bind(source: c, sourceProperty: 'radius'), height: bind(source: c, sourceProperty: 'radius'),
+            start: 180, extent: 360,
+            fill: 'yellow', close: 'pie'
+    )
+
+    arc(
+            x: X_SIZE / 3, y: Y_SIZE / 3,
+            width: bind(source: c, sourceProperty: 'radius'), height: bind(source: c, sourceProperty: 'radius'),
+            start: 0, extent: 180,
+            fill: 'blue', close: 'pie'
+    )
 }
 
 SwingBuilder.build {
