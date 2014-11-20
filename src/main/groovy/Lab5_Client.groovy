@@ -2,7 +2,7 @@
  * @author yaroslav.yermilov
  */
 
-def clientPort = 7777a
+def clientPort = 7777
 def client = new ServerSocket(clientPort)
 
 new Thread({
