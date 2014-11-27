@@ -2,19 +2,30 @@
  * @author yaroslav.yermilov
  */
 
-def clients = [5555, 6666, 7777]
+def clients = [:]
 
 def server = new ServerSocket(4444)
 
 while(true) {
     server.accept { socket ->
         socket.withStreams { serverInput, serverOutput ->
-            def buffer = serverInput.newReader().readLine()
+            def message = serverInput.newReader().readLine()
 
-            clients.each { clientPort ->
-                client = new Socket("localhost", clientPort)
-                client.withStreams { clientInput, clientOutput ->
-                    clientOutput << buffer
+            if (message.startsWith('HELLO|')) {
+                def name = message.split('\\|')[1]
+                def clientPort = Integer.parseInt(message.split('\\|')[2])
+
+                clients[name] = clientPort
+            }
+
+            if (message.startsWith('MESSAGE|')) {
+                clients.each { name, clientPort ->
+                    if (message.split('\\|')[1] != name) {
+                        client = new Socket("localhost", clientPort)
+                        client.withStreams { clientInput, clientOutput ->
+                            clientOutput << message
+                        }
+                    }
                 }
             }
         }
