@@ -14,14 +14,14 @@ if (searchToken) result = text.indexOf(searchToken)
 
 html.html {
     head {
-        title 'Lab 5'
+        title 'Lab 06'
     }
     body {
         h4 'Text'
 
         p text
 
-        form (method: 'post', action: 'Lab6.groovy') {
+        form (method: 'post', action: 'Lab06.groovy') {
             p 'Input'
             input (type: 'text', name: 'searchToken')
             input (type: 'submit', value: 'Submit')
