@@ -18,11 +18,7 @@ new Thread({
 }).start()
 
 
-BufferedReader.metaClass.readInt = {
-    Integer.parseInt(delegate.readLine())
-}
 def console = new BufferedReader(new InputStreamReader(System.in))
-
 
 while(true) {
     def message = console.readLine()

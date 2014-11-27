@@ -12,7 +12,7 @@ String searchToken = request.getParameter('searchToken')
 String result = ''
 if (searchToken) result = text.indexOf(searchToken)
 
-html.html {    // html is implicitly bound to new MarkupBuilder(out)
+html.html {
     head {
         title 'Lab 5'
     }
